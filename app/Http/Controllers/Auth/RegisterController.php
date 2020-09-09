@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
+    
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -86,6 +88,15 @@ class RegisterController extends Controller
                 'photo' => 'usu.png',
             ]);
         }
+
+        // if(Auth()->user()->id_rol == '1'){
+        //     return redirect()->route('home');
+        // }
+        // else{
+        //     return redirect()->route('/');
+        // }
+
+
 
     }
 }

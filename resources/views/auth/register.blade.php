@@ -22,7 +22,7 @@
                     @error('name') is-invalid @enderror" name="name" id="name"
                     value="{{ old('name') }}" required autocomplete="name" autofocus>
                     @error('name')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback text-red-800 uppercase" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -38,7 +38,7 @@
                     @error('email') is-invalid @enderror" id="email"
                     name="email" value="{{ old('email') }}" required autocomplete="email">
                     @error('email')
-                    <span class="invalid-feedback" role="alert">
+                    <span class="invalid-feedback text-red-800 uppercase" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
@@ -57,8 +57,8 @@
                     @error('password') is-invalid @enderror" name="password" 
                     required autocomplete="new-password">
                     @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                    <span class="invalid-feedback text-red-800 uppercase" role="alert">
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
@@ -72,27 +72,6 @@
                     focus:outline-none focus:bg-gray-700 focus:border-gray-500" 
                     id="password-confirm" name="password_confirmation" 
                     required autocomplete="new-password">
-                    @if ($errors->first('pass'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-2 py-2 
-                    rounded relative" role="alert" id="errorPass">
-                        <div class="flex flex-col">
-                            <strong class="font-bold">Error!</strong>
-                            <span class="block sm:inline">
-                                {{$errors->first('pass')}}
-                            </span>
-                        </div>
-                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3" id="closePass">
-                            <svg class="fill-current h-6 w-6 text-red-500" role="button" 
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <title>Close</title>
-                                <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 
-                                1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 
-                                8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 
-                                1.2 0 0 1 0 1.698z"/>
-                            </svg>
-                        </span>
-                    </div>
-                    @endif
                 </div>
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-flugreen-500 text-md 

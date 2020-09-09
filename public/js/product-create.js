@@ -1,0 +1,22 @@
+
+$('#closeName').on('click',function(){
+    $('#errorName').attr('hidden',true);
+});
+$('#closeSubCategory').on('click',function(){
+    $('#errorSubCategory').attr('hidden',true);
+});
+$('#closeprice').on('click',function(){
+    $('#errorprice').attr('hidden',true);
+});
+$('#closeInventario').on('click',function(){
+    $('#errorInventario').attr('hidden',true);
+});
+$('#closSstop').on('click',function(){
+    $('#errorStop').attr('hidden',true);
+});
+$('#closeDescripcion').on('click',function(){
+    $('#errorDescripcion').attr('hidden',true);
+});
+$('#closePhoto').on('click',function(){
+    $('#errorPhoto').attr('hidden',true);
+});

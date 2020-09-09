@@ -1,9 +1,5 @@
 @extends('layouts.perfil-main')
 @section('content-body')
-
-{{-- {{Auth::user()->name}}
-{{Auth::user()->id_rol}} --}}
-
 <div class="p-6">
     <div class="pb-4">
         <a class="bg-flugreen-500 border-solid border-2 font-bold text-md

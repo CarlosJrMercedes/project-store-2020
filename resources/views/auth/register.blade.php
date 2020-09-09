@@ -51,7 +51,7 @@
                     font-sans mb-2" for="grid-city">
                         Contraseña :
                     </label>
-                    <input class="bg-gray-800 appearance-none border-2 border-black 
+                    <input type="password" class="bg-gray-800 appearance-none border-2 border-black 
                     rounded w-full py-3 px-3 text-flugreen-500  leading-tight 
                     focus:outline-none focus:bg-gray-700 focus:border-gray-500
                     @error('password') is-invalid @enderror" name="password" 
@@ -67,10 +67,11 @@
                     font-sans mb-2" for="grid-city">
                         Confirmar contraseña :
                     </label>
-                    <input class="bg-gray-800 appearance-none border-2 border-black 
+                    <input type="password" class="bg-gray-800 appearance-none border-2 border-black 
                     rounded w-full py-3 px-3 text-flugreen-500  leading-tight 
                     focus:outline-none focus:bg-gray-700 focus:border-gray-500" 
-                    id="password-confirm" name="password_confirmation" required autocomplete="new-password">
+                    id="password-confirm" name="password_confirmation" 
+                    required autocomplete="new-password">
                     @if ($errors->first('pass'))
                     <div class="bg-red-100 border border-red-400 text-red-700 px-2 py-2 
                     rounded relative" role="alert" id="errorPass">

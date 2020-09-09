@@ -17,8 +17,8 @@
     |
     */
 
-    Route::get('/', [IndexController::class,'index'])->name('home');
-    Route::get('home', [AdminController::class,'index'])->name('home');
+    Route::get('/', [IndexController::class,'index'])->name('index');
+    Route::get('home', [AdminController::class,'index'])->name('home')->middleware('role:1');
 
 
     //routs users

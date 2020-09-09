@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -65,12 +66,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if(isset($data['foto']) != null){
+            
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'id_rol' => 3,
+                'password' => Hash::make($data['password']),
+                'photo' => basename(Storage::put('src/img/user-images/',$data['foto'])),
+                
+            ]);
+        }
+        else{
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'id_rol' => 3,
+                'password' => Hash::make($data['password']),
+                'photo' => 'usu.png',
+            ]);
+        }
+
     }
 }

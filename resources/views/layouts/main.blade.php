@@ -88,18 +88,50 @@
         </div>
         <div class="flex w-full block lg:flex lg:items-center lg:w-auto 
                     hidden">
-            <button id="car" class="flex items-center px-3 py-2 border border-black 
+              @auth
+              <button id="car" class="flex items-center px-3 py-2 border border-black 
               rounded-full hover:border-flugreen-500 transform motion-reduce:transform-none 
               hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300" title="Crrito">
               <img src="{{asset('src/img/layouts/carrito.png')}}" width="25px" height="25px" alt="">
             </button>
             <div class="m-2"></div>
-            <a class="flex items-center px-3 py-2 border border-black rounded-full 
-            hover:border-flugreen-500 transform motion-reduce:transform-none 
-              hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300"
-              href="{{ route('login') }}" title="Iniciar Sesion">
-              <img src="{{asset('src/img/layouts/usu.png')}}" width="25px" height="25px" alt="">
-            </a>
+              <div class="pl-5 inline-block items-center">
+                <div class="dropdown relative inline-block">
+                  <button class="text-flugreen-500  font-semibold py-2 px-4 
+                        rounded-md inline-flex items-center">
+                        <img src="{{asset("storage/src/img/user-images/".Auth()->user()->photo)}}"
+                         width="30px" height="30px">
+                  </button>
+                  <ul class="dropdown-menu align-middle fixed right-0 mt-0 hidden text-gray-700 pr-4">
+                    <li class="">
+                      <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block 
+                           whitespace-no-wrap" href="#">{{Auth()->user()->name}}</a>
+                    </li>
+                    <li>
+  
+                        <a class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block 
+                        whitespace-no-wrap" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                            {{ __('Cerrar sesion') }}
+                        </a>
+    
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" 
+                        class="d-none">
+                            @csrf
+                        </form>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+              @else
+                <a class="flex items-center px-3 py-2 border border-black rounded-full 
+                hover:border-flugreen-500 transform motion-reduce:transform-none 
+                  hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300"
+                  href="{{ route('login') }}" title="Iniciar Sesion">
+                  <img src="{{asset('src/img/layouts/usu.png')}}" width="25px" height="25px" alt="">
+                </a>
+              @endauth
         </div>
       </nav>
 

@@ -13,7 +13,7 @@
 </head>
 <body class="container mx-auto bg-gray-800">
     {{-- menu --}}
-    <nav class="flex items-center justify-between flex-wrap bg-black p-6 ">
+    <nav class="flex items-center justify-between flex-wrap bg-black bg-opacity-25 p-6 ">
       <div class="block lg:hidden">
         <button id="navbtn" class="flex items-center px-3 py-2 border border-black 
           rounded-full hover:border-flugreen-500 transform motion-reduce:transform-none 

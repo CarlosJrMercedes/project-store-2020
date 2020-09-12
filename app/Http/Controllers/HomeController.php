@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,4 +26,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function edit(){
+        $userId =auth()->user()->id;
+        $data['users'] = User::find($userId);
+        return view('client.edit',$data);
+    }
+
 }

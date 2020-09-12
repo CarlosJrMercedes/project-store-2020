@@ -52,12 +52,27 @@
                   <img src="{{asset('src/img/layouts/arrow.png')}}" width="25px" height="25px" alt="">
                 </button>
                 <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+                  @foreach ($categories as $item)
+                  @if ($loop->first)
                   <li class="">
-                    <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">One</a></li>
+                    <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" 
+                    href="#">{{$item->name}}</a>
+                  </li>
+                  @endif
+                  @if (!$loop->first && !$loop->last)
                   <li class="">
-                    <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Two</a></li>
+                    <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" 
+                    href="#">{{$item->name}}</a>
+                  </li>
+                  @endif
+                  @if ($loop->last)
+                      
                   <li class="">
-                    <a class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Three is the magic number</a></li>
+                    <a class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                     href="#">{{$item->name}}</a>
+                  </li>
+                  @endif
+                  @endforeach
                 </ul>
               </div>
             
@@ -105,7 +120,7 @@
                   <ul class="dropdown-menu align-middle fixed right-0 mt-0 hidden text-gray-700 pr-4">
                     <li class="">
                       <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block 
-                           whitespace-no-wrap" href="#">{{Auth()->user()->name}}</a>
+                           whitespace-no-wrap" href="{{ route('edit.perfil') }}">{{Auth()->user()->name}}</a>
                     </li>
                     <li>
   

@@ -1,7 +1,8 @@
 <?php
 
     use App\Http\Controllers\AdminController;
-    use App\Http\Controllers\IndexController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,8 @@
 
     Route::get('/', [IndexController::class,'index'])->name('index');
     Route::get('home', [IndexController::class,'index'])->name('home');
-    Route::get('dashboard', [AdminController::class,'index'])->name('dashboard')->middleware('role:1');
+    Route::get('dashboard', [AdminController::class,'index'])->name('dashboard')
+    ->middleware('role:1');
 
 
     //routs users
@@ -67,5 +69,5 @@
     //end offer
     Auth::routes();
 
-
-    Route::get('edit/perfil','HomeController@edit')->name('edit.perfil')->middleware('role:3;');
+    Route::get('edit/perfil','HomeController@edit')->name('edit.perfil');
+    Route::PUT('update/perfil','HomeController@update')->name('update.perfil');

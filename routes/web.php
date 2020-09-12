@@ -67,4 +67,5 @@
     //end offer
     Auth::routes();
 
-    // Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('edit/perfil','HomeController@edit')->name('edit.perfil')->middleware('role:3;');

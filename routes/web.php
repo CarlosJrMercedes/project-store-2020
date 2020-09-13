@@ -69,5 +69,6 @@ use App\Http\Controllers\IndexController;
     //end offer
     Auth::routes();
 
+    Route::POST('search','IndexController@search')->name('search');
     Route::get('edit/perfil','HomeController@edit')->name('edit.perfil');
     Route::PUT('update/perfil','HomeController@update')->name('update.perfil');

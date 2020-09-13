@@ -14,8 +14,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $data['categories'] = Category::get(['id','name']);
-        return view('home',$data);
+        // $data['categories'] = Category::get(['id','name']);
+        return view('home');
     }
 
     /**
@@ -34,9 +34,13 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function search(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'search' => ['required','regex:/^[\pL\s\-]+$/u','max:60']
+        ]);
+
+    
     }
 
     /**

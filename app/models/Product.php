@@ -10,7 +10,7 @@ class Product extends Model
     use SoftDeletes;
 
     public function subCategory(){
-        return $this->belongsTo(SubCategory::class,'id_sub_category');
+        return $this->belongsTo(SubCategory::class,'id_sub_category')->withTrashed();
     }
     //
 }

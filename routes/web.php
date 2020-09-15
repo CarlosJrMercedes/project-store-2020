@@ -72,3 +72,8 @@ use App\Http\Controllers\IndexController;
     Route::POST('search','IndexController@search')->name('search');
     Route::get('edit/perfil','HomeController@edit')->name('edit.perfil');
     Route::PUT('update/perfil','HomeController@update')->name('update.perfil');
+
+
+
+    Route::GET('show/{id}/productHome','ClientController@showProduct')->name('show.productHome');
+    Route::GET('show/{id}/offerHome','ClientController@showOffer')->name('show.offerHome');

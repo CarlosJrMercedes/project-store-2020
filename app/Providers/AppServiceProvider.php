@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         
 
         $data['categoriesHome'] = Category::get(['id','name']);
-        $data['offertsHome'] = Offer::with('product')->paginate(10);
+        $data['offertsHome'] = Offer::with('product')->paginate(6);
         $data['productsHome'] = Product::with('subCategory')->paginate(10);
         View::share($data);
     }

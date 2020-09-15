@@ -7,6 +7,7 @@
     @section('style')
         <link rel="stylesheet" href="<script src="https://kit.fontawesome.com/392edbd6ae.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('src/css/tailwindcss.css')}}">
+        <link rel="stylesheet" href="{{asset('src/css/modal.css')}}">
     @show
     
 </head>
@@ -113,8 +114,7 @@
 
           </div>
         </div>
-        <div class="flex w-full block lg:flex lg:items-center lg:w-auto 
-                    hidden">
+        <div class="flex w-full block lg:flex lg:items-center lg:w-auto hidden z-40">
               @auth
               <button id="car" class="flex items-center px-3 py-2 border border-black 
               rounded-full hover:border-flugreen-500 transform motion-reduce:transform-none 
@@ -175,7 +175,6 @@
   </footer>
     @section('scrippt')
     <script src="{{asset('src/js/jquery.min.js')}}"></script>
-
     <script src="{{asset('src/js/sweetalert2.all.min.js')}}"></script>
     <script src="{{asset('src/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/nav.js')}}"></script>

@@ -10,6 +10,6 @@ class Offer extends Model
     use SoftDeletes;
 
     public function product(){
-        return $this->belongsTo(Product::class,'product_id');
+        return $this->belongsTo(Product::class,'product_id')->withTrashed();
     }
 }

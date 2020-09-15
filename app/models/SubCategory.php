@@ -10,7 +10,7 @@ class SubCategory extends Model
     use SoftDeletes;
 
     public function category(){
-        return $this->belongsTo(Category::class,'id_category');
+        return $this->belongsTo(Category::class,'id_category')->withTrashed();
     }
 
 

@@ -124,8 +124,8 @@ rounded-md">
     <div class="flex flex-wrap w-1/2 bg-gray-800 opacity-24 border-2 border-gray-700 p-5
     rounded-md text-2xl justify-center items-center " >
         <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-full px-3 mb-6 md:mb-0" class="w-full h-full">
-                <img src="{{asset("storage/src/img/product-images/{$product->photo1}")}}" alt="">
+            <div class="flex w-full md:w-full px-3 mb-6 md:mb-0 justify-center items-center">
+                <img src="{{asset("storage/src/img/product-images/{$product->photo1}")}}" width="80%">
             
             </div>
         </div>

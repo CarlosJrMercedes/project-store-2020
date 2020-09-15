@@ -1,4 +1,4 @@
-@extends('layouts.perfil-main')
+@extends('layouts.main')
 
 @section('content-body')
 <div class="flex flex-wrap w-auto h-auto bg-gray-800 opacity-24 border-2 border-gray-700

@@ -93,7 +93,7 @@ class OfferController extends Controller
      */
     public function show($id)
     {
-        $data['offer'] = Offer::find($id);
+        $data['offer'] = Offer::with('product')->find($id);
         return view('offer.show',$data);
     }
 

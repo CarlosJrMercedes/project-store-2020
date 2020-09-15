@@ -7,14 +7,12 @@
     @section('style')
         <link rel="stylesheet" href="<script src="https://kit.fontawesome.com/392edbd6ae.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('src/css/tailwindcss.css')}}">
-        <link rel="stylesheet" href="{{asset('src/css/modal.css')}}">
-        <link rel="stylesheet" href="{{asset('src/css/jquery.dataTables.min.css')}}">
     @show
     
 </head>
 <body class="container mx-auto bg-gray-800">
     {{-- menu --}}
-    <nav class="flex items-center justify-between flex-wrap bg-black bg-opacity-25 p-6 ">
+    <nav class="flex items-center justify-between flex-wrap bg-black bg-opacity-25 p-6">
       <div class="block lg:hidden">
         <button id="navbtn" class="flex items-center px-3 py-2 border border-black 
           rounded-full hover:border-flugreen-500 ">
@@ -170,11 +168,14 @@
 
     @yield('content-body')
 </body>
-  <footer class='w-full h-16 bg-black bg-opacity-25 text-center fixed  p-5 inset-x-0 bottom-0'>
-    {{ date('Y') }} - Derechos reservados
+<div class="w-full m-2"></div>
+  <footer class='w-full h-16 bg-black bg-opacity-25 text-center sticky p-5 inset-x-0 bottom-0 
+    text-flugreen-500 ippercase text-md'>
+    <strong>{{ date('Y') }} - Derechos reservados</strong>
   </footer>
     @section('scrippt')
     <script src="{{asset('src/js/jquery.min.js')}}"></script>
+
     <script src="{{asset('src/js/sweetalert2.all.min.js')}}"></script>
     <script src="{{asset('src/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/nav.js')}}"></script>

@@ -27,9 +27,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
+
         $data['categoriesHome'] = Category::get(['id','name']);
-        $data['offertsHome'] = Offer::get();
-        $data['productsHome'] = Product::get();
+        $data['offertsHome'] = Offer::with('product')->paginate(10);
+        $data['productsHome'] = Product::with('subCategory')->paginate(10);
         View::share($data);
     }
 }

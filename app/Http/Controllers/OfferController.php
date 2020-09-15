@@ -16,7 +16,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $data['offers'] = Offer::with('product')->get();
+        $data['offers'] = Offer::with('product')->paginate(10);
         return view('offer.index',$data);
 
     }

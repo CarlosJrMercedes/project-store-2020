@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data['products'] = Product::with('subCategory')->get();
+        $data['products'] = Product::with('subCategory')->paginate(10);
         return view('product.index',$data);
     }
     public function restore()

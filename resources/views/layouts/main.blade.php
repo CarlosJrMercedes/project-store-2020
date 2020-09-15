@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<script src="https://kit.fontawesome.com/392edbd6ae.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('src/css/tailwindcss.css')}}">
         <link rel="stylesheet" href="{{asset('src/css/modal.css')}}">
+        <link rel="stylesheet" href="{{asset('src/css/jquery.dataTables.min.css')}}">
     @show
     
 </head>
@@ -47,14 +48,14 @@
               hidden">
           <div class="flex text-sm lg:flex-grow sm:flex-col lg:flex-row">
 
-              <div class="dropdown inline-block relative">
+              <div class="dropdown inline-block relative z-40">
                 <button class="text-flugreen-500  font-semibold py-3 px-4 rounded inline-flex 
                 items-center hover:border-blue-600 hover:text-blue-600">
                   <span class="mr-1">Categorias</span>
                   <img src="{{asset('src/img/layouts/arrow.png')}}" width="20px" height="20px" alt="">
                 </button>
-                <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
-                  @foreach ($categories as $item)
+                <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 ">
+                  @foreach ($categoriesHome as $item)
                   @if ($loop->first)
                   <li class="">
                     <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" 
@@ -169,9 +170,13 @@
 
     @yield('content-body')
 </body>
+  <footer class='w-full h-16 bg-black bg-opacity-25 text-center fixed  p-5 inset-x-0 bottom-0'>
+    {{ date('Y') }} - Derechos reservados
+  </footer>
     @section('scrippt')
     <script src="{{asset('src/js/jquery.min.js')}}"></script>
     <script src="{{asset('src/js/sweetalert2.all.min.js')}}"></script>
+    <script src="{{asset('src/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/nav.js')}}"></script>
     @show
 </html>

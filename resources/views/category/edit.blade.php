@@ -52,6 +52,12 @@
                     rounded-md hover:bg-opacity-0 hover:text-flugreen-500 " name="send" type="submit">
                         <strong>Modificar Datos</strong>
                     </button>
+                    <div class="m-2"></div>
+                    <a class="bg-blue-800 border-solid border-2  border-black py-3 px-3 cursor-pointer
+                    rounded-md hover:bg-opacity-0 hover:text-flugreen-500 " title="Cancelar" 
+                    href="{{route('categories.index')}}">
+                        <strong>Cancelar</strong>
+                    </a>
                 </div>
             </form>
         </div>

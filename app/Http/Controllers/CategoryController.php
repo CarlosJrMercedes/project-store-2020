@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $data['categories']= Category::get();
+        $data['categories']= Category::paginate(10);
         return view('category.index', $data);
     }
 

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\models\Category;
+use App\models\Offer;
+use App\models\Product;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $data['categories'] = Category::get(['id','name']);
+        $data['categoriesHome'] = Category::get(['id','name']);
+        $data['offertsHome'] = Offer::get();
+        $data['productsHome'] = Product::get();
         View::share($data);
     }
 }

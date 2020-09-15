@@ -4,7 +4,7 @@
     <div class="pb-4">
         <a class="bg-flugreen-500 border-solid border-2 font-bold text-md
                   border-black py-2 px-2 rounded hover:bg-black hover:text-flugreen-500 uppercase" 
-            href="{{ route('product.index') }}">Cancelar</a>
+            href="{{ route('product.index') }}">Regresar</a>
     </div>
     <table class="table-fixed bg-gray-700 w-full h-auto text-center text-md rounded-md">
         <thead>

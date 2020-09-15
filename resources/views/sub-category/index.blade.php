@@ -9,9 +9,12 @@
                   border-black py-2 px-2 rounded hover:bg-black hover:text-flugreen-500" 
             href="{{ route('sub-categories.restore') }}">Ver sub categorias desactivados</a>
     </div>
-    <table class="table-fixed bg-gray-700 w-full h-auto text-center rounded-md">
+    <div class="flex flex-1 text-xl bg-gray-700 text-black rounded justify-center">
+         {{ $subCategories->total() }} Registros
+    </div>
+    <table class="table-fixed bg-gray-700 w-full text-center rounded-md">
         <thead>
-          <tr>
+          <tr class="border-t-2 border-black">
             <th class="w-12 px-4 py-2 border-r-2  border-b-2 border-black"> Nª </th>
             <th class="w-1/2 px-4 py-2 border-r-2  border-b-2 border-black">Nombre</th>
             <th class="w-1/2 px-4 py-2 border-r-2  border-b-2 border-black">Categoria</th>
@@ -26,7 +29,7 @@
                 <tr class="text-center">
                     <td class="border-r-2 border-black px-4 py-2">{{$loop->iteration}} </td>
                     <td class="border-r-2 border-black px-4 py-2">{{ $value->name }}</td>
-                    <td class="border-r-2 border-black px-4 py-2">{{ $value->find($value->id)->category->name }}</td>
+                    <td class="border-r-2 border-black px-4 py-2">{{ $value->category->name }}</td>
                     <td class="border-r-2 border-black px-4 py-2">{{ $value->created_at }}</td>
                     <td class="border-r-2 border-black px-4 py-2">{{ $value->updated_at }}</td>
                     <td>
@@ -55,6 +58,44 @@
                     </td>
                 </tr>
             @endforeach
+            <tr>
+                <td colspan="6">
+                    <div class="flex flex-shrink-0 justify-center p-5 items-center">
+                        @if ($subCategories->hasPages())
+                            @if (!$subCategories->onFirstPage())
+                            <div class="flex-none">
+                                <a href="{{ $subCategories->previousPageUrl() }}" class="px-2 py-3 
+                                    border-2 border-black hover:border-blue-600 hover:text-blue-500">
+                                    <- ANTERIOR
+                                </a>
+                            </div>
+                            @else
+                            <div class="flex-none py-3 px-2 text-gray-500 border-2 border-gray-500
+                            cursor-not-allowed hover:border-red-800 hover:text-red-800">
+                                <- ANTERIOR
+                            </div>
+                            @endif
+                            <div class="mr-2 ml-2 flex-none px-2 py-3">
+                                Página {{ "{$subCategories->currentPage()} de {$subCategories->lastPage()}" }}
+                            </div>
+                            @if ($subCategories->hasMorePages())
+                            <div class="flex-none">
+                                <a href="{{ $subCategories->nextPageUrl() }}" class="px-2 py-3 
+                                    border-2 border-black hover:border-blue-600 hover:text-blue-500">
+                                    SIGUIENTE ->
+                                </a>
+                            </div>
+                            @else
+                            <div class="flex-none py-3 px-2 text-gray-500 border-2 border-gray-500
+                            cursor-not-allowed hover:border-red-800 hover:text-red-800">
+                                SIGUIENTE ->
+                            </div>
+                            @endif
+                        @endif
+
+                    </div>
+                </td>
+            </tr>
         </tbody>
       </table>
 </div>

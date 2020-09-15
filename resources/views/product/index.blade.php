@@ -9,7 +9,10 @@
                   border-black py-2 px-2 rounded hover:bg-black hover:text-flugreen-500" 
             href="{{ route('product.restore') }}">Ver productos desactivados</a>
     </div>
-    <table class="table-fixed bg-gray-700 w-full h-auto text-center text-md rounded-md">
+    <div class="flex flex-1 text-xl bg-gray-700 text-black rounded justify-center p-2">
+        {{ $products->total() }} Registros
+   </div>
+    <table class="table-fixed bg-gray-700 w-full h-auto text-center text-md rounded-md border-t-2 border-black">
         <thead>
           <tr>
             <th class="w-12 px-4 py-2 border-r-2  border-b-2 border-black"> Nª </th>
@@ -21,7 +24,11 @@
           </tr>
         </thead>
         <tbody>
-
+            @if ($products->total() == 0)
+                <tr>
+                    <td colspan="6" class="text-xl uppercase">No hay registros</td>
+                </tr>
+            @endif
             @foreach ($products as $value)
                 <tr class="text-center">
                     <td class="border-r-2 border-black px-4 py-2">{{$loop->iteration}} </td>
@@ -73,6 +80,45 @@
                     </td>
                 </tr>
             @endforeach
+            <tr>
+                <td colspan="6">
+                    <div class="flex flex-shrink-0 justify-center p-5 items-center">
+                        @if ($products->hasPages())
+                            @if (!$products->onFirstPage())
+                            <div class="flex-none">
+                                <a href="{{ $products->previousPageUrl() }}" class="px-2 py-3 
+                                    border-2 border-black hover:border-blue-600 hover:text-blue-500">
+                                    <- ANTERIOR
+                                </a>
+                            </div>
+                            @else
+                            <div class="flex-none py-3 px-2 text-gray-500 border-2 border-gray-500
+                            cursor-not-allowed hover:border-red-800 hover:text-red-800">
+                                <- ANTERIOR
+                            </div>
+                            @endif
+                            <div class="mr-2 ml-2 flex-none px-2 py-3">
+                                Página {{ "{$products->currentPage()} de {$products->lastPage()}" }}
+                                {{-- {!! $products->render()!!} --}}
+                            </div>
+                            @if ($products->hasMorePages())
+                            <div class="flex-none">
+                                <a href="{{ $products->nextPageUrl() }}" class="px-2 py-3 
+                                    border-2 border-black hover:border-blue-600 hover:text-blue-500">
+                                    SIGUIENTE ->
+                                </a>
+                            </div>
+                            @else
+                            <div class="flex-none py-3 px-2 text-gray-500 border-2 border-gray-500
+                            cursor-not-allowed hover:border-red-800 hover:text-red-800">
+                                SIGUIENTE ->
+                            </div>
+                            @endif
+                        @endif
+
+                    </div>
+                </td>
+            </tr>
         </tbody>
       </table>
 </div>

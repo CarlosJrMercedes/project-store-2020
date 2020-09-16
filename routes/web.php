@@ -79,6 +79,7 @@ use App\Http\Controllers\IndexController;
     Route::GET('show/{id}/offerHome','ClientController@showOffer')->name('show.offerHome');
 
     Route::GET('carrito/{id}/add','CartController@add')->name('cart.add');
+    Route::GET('carrito/{id}/addOffer','CartController@addOffer')->name('cart.addOffer');
     Route::GET('remove/{id}/element','CartController@remove')->name('remove.cartProduct');
     Route::GET('remove-all/element','CartController@clean')->name('removeAll.cartProduct');
     Route::GET('procesar/cart','CartController@shopping')->name('procesar.cart');

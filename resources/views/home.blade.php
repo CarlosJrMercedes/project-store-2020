@@ -237,13 +237,16 @@
     
     {{-- @dd(session('error')) --}}
     @if (session('remove'))
-        <script>Swal.fire("Exito","{{session('remove')}}","success");</script>
+        <script>Swal.fire("estado..!","{{session('remove')}}","success");</script>
     @endif
     @if (session('clear'))
-        <script>Swal.fire("Exito","{{session('clear')}}","info");</script>
+        <script>Swal.fire("estado..!","{{session('clear')}}","info");</script>
     @endif
     @if (session('vacio'))
-        <script>Swal.fire("Exito","{{session('vacio')}}","warning");</script>
+        <script>Swal.fire("estado..!","{{session('vacio')}}","warning");</script>
+    @endif
+    @if (session('compra'))
+        <script>Swal.fire("Exito","{{session('compra')}}","success");</script>
     @endif
     
 @endsection

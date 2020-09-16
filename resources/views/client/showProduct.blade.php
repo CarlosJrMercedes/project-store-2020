@@ -92,11 +92,11 @@ rounded-md">
         <div class="flex flex-wrap w-full bg-gray-800 opacity-24 border-2 border-gray-700 p-2
             rounded-md text-xl justify-center items-center">
             <div class="flex flex-wrap -mx-3 mb-6 ">
-                    <a class="bg-red-800 border-2 border-gray-800 
+                <a class="bg-red-800 border-2 border-gray-800 
                     rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase" 
                     title="Agregar a carrito" href="{{ route('cart.add', $product->id) }}">
                     <img src="{{ asset('src/img/forms/addcarrito.png') }}" width="50px" height="50px">
-                    </a>
+                </a>
                 <div class="m-2"></div>
                
                 <a title="Cancelar" class="flex bg-blue-800 border-2 border-gray-800 
@@ -127,12 +127,15 @@ rounded-md">
         <script>Swal.fire("Exito","{{session('exito')}}","success");</script>
     @endif
     @if (session('remove'))
-        <script>Swal.fire("Estado!","{{session('remove')}}","info");</script>
+        <script>Swal.fire("estado..!","{{session('remove')}}","success");</script>
     @endif
     @if (session('clear'))
-        <script>Swal.fire("Estado!","{{session('clear')}}","info");</script>
+        <script>Swal.fire("estado..!","{{session('clear')}}","info");</script>
     @endif
     @if (session('vacio'))
-        <script>Swal.fire("Error","{{session('vacio')}}","warning");</script>
+        <script>Swal.fire("estado..!","{{session('vacio')}}","warning");</script>
+    @endif
+    @if (session('compra'))
+        <script>Swal.fire("Exito","{{session('compra')}}","success");</script>
     @endif
 @endsection

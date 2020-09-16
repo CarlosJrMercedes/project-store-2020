@@ -68,31 +68,17 @@ rounded-md">
         <div class="flex flex-wrap w-full bg-gray-800 opacity-24 border-2 border-gray-700 p-2
             rounded-md text-xl justify-center items-center">
             <div class="flex flex-wrap -mx-3 mb-6 ">
-                <form action="{{ route('offer.edit', $offer->id  ) }}" method="GET">
-                    @csrf
-                    <button title="Editar" class="bg-green-600 border-2 border-gray-800 
+                <a class="bg-red-800 border-2 border-gray-800 
                     rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase" 
-                    type="submit">
-                        editar
-                    </button>
-                </form>
-                <div class="m-2"></div>
-                <form action="{{ route('offer.destroy',$offer->id) }}" method="POST"
-                    onsubmit="return confirm('¿Realmente quieres eliminar este usuario?');">
-                    @csrf
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button title="Inhabilitar" class="bg-red-800 border-2 border-gray-800 
-                    rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase" 
-                    type="submit">
-                    inhabilitar
-                    </button>
-                </form>
+                    title="Agregar a carrito" href="{{ route('cart.addOffer', $offer->id) }}">
+                    <img src="{{ asset('src/img/forms/addcarrito.png') }}" width="50px" height="50px">
+                </a>
                 <div class="m-2"></div>
                
-                <a title="Cancelar" class="bg-blue-800 border-2 border-gray-800 
-                rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase" 
-                type="submit" href="{{ route('offer.index')}}">
-                    Cancelar
+                <a title="Cancelar" class="flex bg-blue-800 border-2 border-gray-800 
+                rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase items-center" 
+                type="submit" href="{{ route('index')}}">
+                    regresar
                 </a>
             </div>
         </div>
@@ -110,4 +96,22 @@ rounded-md">
     
 </div>
 
+@endsection
+@section('scrippt')
+@parent
+    @if (session('exito'))
+        <script>Swal.fire("Exito","{{session('exito')}}","success");</script>
+    @endif
+    @if (session('remove'))
+        <script>Swal.fire("estado..!","{{session('remove')}}","success");</script>
+    @endif
+    @if (session('clear'))
+        <script>Swal.fire("estado..!","{{session('clear')}}","info");</script>
+    @endif
+    @if (session('vacio'))
+        <script>Swal.fire("estado..!","{{session('vacio')}}","warning");</script>
+    @endif
+    @if (session('compra'))
+        <script>Swal.fire("Exito","{{session('compra')}}","success");</script>
+    @endif
 @endsection

@@ -26,12 +26,19 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        
-
-        $data['categoriesHome'] = Category::get(['id','name']);
-        $data['offertsHome'] = Offer::with('product')->paginate(6);
-        $data['productsHome'] = Product::with('subCategory')->paginate(10);
-        View::share($data);
+    {         
+        View::composer('layouts.main',function($view){
+            $cantidad= \Cart::getContent()->count();
+            $view->with('carritoCount', $cantidad);
+        });
+        View::composer('layouts.main',function($view){
+            $view->with('categoriesHome', Category::get(['id','name']));
+        });
+        View::composer('home',function($view){
+            $view->with('offertsHome', Offer::with('product')->paginate(6));
+        });
+        View::composer('home',function($view){
+            $view->with('productsHome', Product::with('subCategory')->paginate(10));
+        });
     }
 }

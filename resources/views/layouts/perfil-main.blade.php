@@ -97,6 +97,7 @@
         </div>
     </nav>
     @yield('content-body')
+
 </body>
     @section('scrippt')
       <script src="{{asset('src/js/jquery.min.js')}}"></script>

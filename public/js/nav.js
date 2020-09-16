@@ -10,10 +10,6 @@ boton.addEventListener('click', function(){
     // Swal.fire("Hola","CArgo la alerta","info");
 });
 
-$(document).on('click','#car', function(){
-    Swal.fire("Hola","Cargo el carrito","info");
-
-});
 $(document).on('click','#login', function(){
     formLogin.classList.toggle('hidden');
 });
@@ -46,3 +42,5 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 } 
+
+

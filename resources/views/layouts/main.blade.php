@@ -116,11 +116,29 @@
         </div>
         <div class="flex w-full block lg:flex lg:items-center lg:w-auto hidden z-40">
               @auth
-              <button id="car" class="flex items-center px-3 py-2 border border-black 
-              rounded-full hover:border-flugreen-500 transform motion-reduce:transform-none 
-              hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300" title="Crrito">
-              <img src="{{asset('src/img/layouts/carrito.png')}}" width="25px" height="25px" alt="">
-            </button>
+              @if ($carritoCount > 0)
+                  <button id="car" class="modal-open flex items-center px-3 py-2 border border-black 
+                      rounded-full hover:border-flugreen-500 transform motion-reduce:transform-none 
+                      hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300" title="Crrito">
+                      <img src="{{asset('src/img/layouts/carrito.png')}}" width="25px" height="25px" alt="">
+                      <span class="flex justify-center text-center">
+                        <span class="relative inline-flex rounded-md px-1 bg-white 
+                        text-center text-red-600"><strong>{{$carritoCount}}</strong></span>
+                    </span> 
+                  </button>
+              @else
+                  <button id="car" class="modal-open flex items-center px-3 py-2 border border-black 
+                      rounded-full hover:border-flugreen-500 transform motion-reduce:transform-none 
+                      hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300" title="Crrito">
+                      <img src="{{asset('src/img/layouts/carrito.png')}}" width="25px" 
+                      height="25px">
+                      <div class="m-1"></div>
+                      <span class="flex justify-center text-center">
+                          <span class="relative inline-flex rounded-md px-1 bg-white 
+                          text-center text-red-600"><strong>0</strong></span>
+                      </span> 
+                  </button>
+              @endif
             <div class="m-2"></div>
               <div class="pl-5 inline-block items-center">
                 <div class="dropdown relative inline-block">
@@ -161,10 +179,93 @@
               @endauth
         </div>
       </nav>
-
-
+      {{-- <button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button> --}}
+      <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+          
+          <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+            <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+            </svg>
+            <span class="text-sm">(Esc)</span>
+          </div>
     
+          <!-- Add margin if you want to see some of the overlay behind the modal-->
+          <div class="modal-content py-4 text-left px-6">
+            <!--Title-->
+            <div class="flex justify-between items-center pb-3">
+              <p class="text-2xl font-bold">Productos seleccionados!</p>
+              <div class="modal-close cursor-pointer z-50">
+                <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                  <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                </svg>
+              </div>
+            </div>
+            <!--Body-->
+            @if (count(Cart::getContent()))
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Nombe</th>
+                  <th>precio</th>
+                  <th>accion</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach (Cart::getContent() as $item)
+                <tr>
+                  <td>
+                    {{$item->name}}
+                  </td>
+                  <td>
+                    {{$item->price}}
+                  </td>
+                  <td class="flex items-center justify-center ">
+                    <a class="bg-red-600 px-2 py-2 rounded-lg hover:bg-opacity-25
+                      cursor-pointer" href="{{ route('remove.cartProduct', $item->id) }}">
+                      <img src="{{asset("src/img/forms/drop.png")}}" width="20px"
+                      height="20px">
+                    </a>
+                  </td>
+                </tr>
+                @endforeach
+                <tr class="border-t-2 border-black">
+                  <td colspan="2">Total</td>
+                  <td>${{number_format(Cart::getSubtotal(),2)}}</td>
+                </tr>
+                <tr>
+                  <br>
+                  <td colspan="3">
+                    <a href="{{ route('removeAll.cartProduct') }}" class="uppercase">
+                      <div class="flex bg-teal-500 w-full rounded-lg items-center justify-center cursor-pointer
+                        py-3 px-3 hover:bg-opacity-25 hover:text-red-600">
+                        <strong>Remover todo!</strong>
+                      </div>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              
+            </table>
+            @else
+                <span>No hay productos agregados....</span>
+            @endif
+            <div class="m-3"></div>
+            <!--Footer-->
+            <div class="flex justify-end pt-2">
+              <a class="px-4 bg-green-500 p-3 rounded-lg text-white hover:bg-green-800 
+              hover:text-white mr-2 uppercase" href="{{ route('procesar.cart') }}">pagar</a>
 
+              <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white 
+              hover:bg-indigo-400 uppercase">Close</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    
 
     @yield('content-body')
 </body>
@@ -178,6 +279,7 @@
     <script src="{{asset('src/js/sweetalert2.all.min.js')}}"></script>
     <script src="{{asset('src/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/nav.js')}}"></script>
+    <script src="{{asset('js/modal.js')}}"></script>
     @show
 </html>
 

@@ -1,8 +1,7 @@
 @extends('layouts.main')
 
 @section('content-body')
-<div class="flex flex-wrap justify-center pt-10 ">
-    
+<div class="flex flex-wrap justify-center pt-10">
     <div class="flex flex-wrap  p-10 justify-center border-2 border-black w-1/2 bg-black 
     bg-opacity-25 rounded">
     <div class="flex w-full justify-center pb-5">
@@ -81,5 +80,8 @@
             </div>
         </form>
     </div>
+</div>
+<div class="h-48">
+
 </div>
 @endsection

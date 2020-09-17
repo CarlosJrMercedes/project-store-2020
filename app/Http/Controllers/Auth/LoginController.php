@@ -41,8 +41,13 @@ class LoginController extends Controller
     {
         if (auth()->user()->id_rol == '1') {
             return route('dashboard');
+        }elseif(auth()->user()->id_rol == '2'){
+            return route('index.seller');
+        }
+        else{
+            return route('index');
+            // return property_exists($this, 'redirectTo') ? $this->redirectTo : 'home';
         }
 
-        return property_exists($this, 'redirectTo') ? $this->redirectTo : 'home';
     }
 }

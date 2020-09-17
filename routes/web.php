@@ -86,3 +86,15 @@ use App\Http\Controllers\IndexController;
     Route::GET('remove-all/element','CartController@clean')->name('removeAll.cartProduct');
     Route::GET('procesar/cart','CartController@shopping')->name('procesar.cart');
     Route::POST('new/{id}/comment','ClientController@newComment')->name('new.comment');
+    Route::POST('ratings/{id}/like','ClientController@ratings')->name('ratings.like');
+
+    //<-client
+    
+
+    // seller->
+    Route::GET('index/seller','SellerController@index')->name('index.seller');
+    Route::POST('show/seller','SellerController@answer')->name('show.seller');
+    Route::POST('new/answer','SellerController@respans')->name('new.answer');
+
+
+    // <- seller

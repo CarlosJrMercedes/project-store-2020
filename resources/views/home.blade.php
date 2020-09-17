@@ -236,6 +236,9 @@
 @parent
     
     {{-- @dd(session('error')) --}}
+    @if (session('error'))
+        <script>Swal.fire("estado..!","{{session('error')}}","warning");</script>
+    @endif
     @if (session('remove'))
         <script>Swal.fire("estado..!","{{session('remove')}}","success");</script>
     @endif

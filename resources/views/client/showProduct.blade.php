@@ -59,20 +59,40 @@ rounded-md">
         <div class="flex flex-wrap w-full bg-gray-800 opacity-24 border-2 border-gray-700 p-2
             rounded-md text-xl justify-center items-center">
             <div class="flex flex-wrap -mx-3 mb-6 ">
+                
+                <a title="Cancelar" class="flex bg-blue-800 border-2 border-gray-800 
+                    rounded-md py-2 px-2 hover:bg-opacity-25 hover:border-blue-700 uppercase items-center" 
+                    type="submit" href="{{ route('index')}}">
+                    regresar
+                </a>
+            <div class="m-2"></div>
                 @auth
-                <a class="bg-red-800 border-2 border-gray-800 
+                <a class="flex border-2 border-gray-800 items-center
                     rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase" 
                     title="Agregar a carrito" href="{{ route('cart.add', $product->id) }}">
                     <img src="{{ asset('src/img/forms/addcarrito.png') }}" width="50px" height="50px">
                 </a>
+                <form action="{{ route('ratings.like', $product->id) }}" method="POST">
+                    @csrf
+                    <input type="text" name="ratings" value="1" readonly hidden>
+                    <button class="border-2 border-gray-800 items-center
+                        rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase" 
+                        title="Agregar a carrito">
+                        <img src="{{ asset('src/img/forms/like.png') }}" width="50px" height="50px">
+                        <span class="inset-x-0 bottom-0 text-blue-700">{{$likes}}</span>
+                    </button>
+                </form>
+                <form action="{{ route('ratings.like', $product->id)}}" method="POST">
+                    @csrf
+                    <input type="text" name="ratings" value="0" readonly hidden>
+                    <button class="border-2 border-gray-800
+                        rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-red-700 uppercase" 
+                        title="Agregar a carrito">
+                        <img src="{{ asset('src/img/forms/dislike.png') }}" width="50px" height="50px">
+                        <span class="inset-x-0 bottom-0 text-red-700">{{$disLikes}}</span>
+                    </button>
+                </form>
                 @endauth
-                <div class="m-2"></div>
-               
-                <a title="Cancelar" class="flex bg-blue-800 border-2 border-gray-800 
-                rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase items-center" 
-                type="submit" href="{{ route('index')}}">
-                    regresar
-                </a>
             </div>
         </div>
     </div>
@@ -90,7 +110,9 @@ rounded-md">
     border-2 border-gray-700 rounded-md py-3">
         <p><strong>comentarios</strong></p>
     </div>
-    <div class="flex w-full items-center border-2 border-gray-700 rounded-md py-3">
+
+        @auth
+        <div class="flex w-full items-center border-2 border-gray-700 rounded-md py-3">
             <form action="{{ route('new.comment',$product->id) }}" method="POST" 
                 class="flex-1 items-center p-5">
                 @csrf
@@ -127,11 +149,10 @@ rounded-md">
                 <div class="m-2"></div>
                     <input type="submit" value="Comentar" title="Comentar" class="bg-black bg-opacity-25 
                     px-2 py-2 rounded-md cursor-pointer text-white uppercase hover:text-black 
-                    hover:bg-gray-500">
-                    
+                    hover:bg-gray-500"> 
             </form>
-                
-    </div>
+        </div>
+        @endauth
     @if ($comentarios->isNotEmpty())
         @foreach ($comentarios as $item)
         <div class="flex w-full items-center justify-center pt-5">
@@ -202,7 +223,6 @@ rounded-md">
         </div>
     </div>
 </div>
- 
 @endsection
 
 @section('scrippt')

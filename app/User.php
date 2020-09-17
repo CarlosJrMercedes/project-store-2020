@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function authorizeRoles($roles)
     {
-        abort_unless($this->hasAnyRole($roles),redirect('/'));
+        abort_unless($this->hasAnyRole($roles),redirect('/')->with('error','El Usuario no posee permisos necesarios .....'));
         return true;
     }   
     public function hasAnyRole($roles)

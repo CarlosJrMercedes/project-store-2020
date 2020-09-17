@@ -38,7 +38,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with('offertsHome', Offer::with('product')->paginate(6));
         });
         View::composer('home',function($view){
-            $view->with('productsHome', Product::with('subCategory')->paginate(10));
+            $view->with('productsHome', Product::with('subCategory')->where('quantity','>','0')
+            ->paginate(10));
         });
     }
 }

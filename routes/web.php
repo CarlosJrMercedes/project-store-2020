@@ -68,6 +68,8 @@ use App\Http\Controllers\IndexController;
     ->middleware('role:1;');
     //end offer
     Auth::routes();
+    
+    //client->
 
     Route::POST('search','IndexController@search')->name('search');
     Route::get('edit/perfil','HomeController@edit')->name('edit.perfil');
@@ -83,3 +85,4 @@ use App\Http\Controllers\IndexController;
     Route::GET('remove/{id}/element','CartController@remove')->name('remove.cartProduct');
     Route::GET('remove-all/element','CartController@clean')->name('removeAll.cartProduct');
     Route::GET('procesar/cart','CartController@shopping')->name('procesar.cart');
+    Route::POST('new/{id}/comment','ClientController@newComment')->name('new.comment');

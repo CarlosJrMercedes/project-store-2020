@@ -68,11 +68,13 @@ rounded-md">
         <div class="flex flex-wrap w-full bg-gray-800 opacity-24 border-2 border-gray-700 p-2
             rounded-md text-xl justify-center items-center">
             <div class="flex flex-wrap -mx-3 mb-6 ">
-                <a class="bg-red-800 border-2 border-gray-800 
-                    rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase" 
-                    title="Agregar a carrito" href="{{ route('cart.addOffer', $offer->id) }}">
-                    <img src="{{ asset('src/img/forms/addcarrito.png') }}" width="50px" height="50px">
-                </a>
+                @auth
+                    <a class="bg-red-800 border-2 border-gray-800 
+                        rounded-md py-3 px-3 hover:bg-opacity-25 hover:border-blue-700 uppercase" 
+                        title="Agregar a carrito" href="{{ route('cart.addOffer', $offer->id) }}">
+                        <img src="{{ asset('src/img/forms/addcarrito.png') }}" width="50px" height="50px">
+                    </a>
+                @endauth
                 <div class="m-2"></div>
                
                 <a title="Cancelar" class="flex bg-blue-800 border-2 border-gray-800 

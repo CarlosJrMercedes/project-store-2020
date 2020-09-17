@@ -46,11 +46,14 @@ class CartController extends Controller
             if($factura->save()){
                 foreach (\Cart::getContent() as $item) {
                     $venta = new Sale();
+                    $product = Product::find($item->id);
                     $venta->quantity = $item->quantity;
                     $venta->unit_price = number_format($item->price,2);
                     $venta->product_id = $item->id;
                     $venta->invoice_id = $factura->id;
+                    $product->quantity = ($product->quantity - $item->quantity);
                     $venta->save();
+                    $product->save();
                 }
             }
 

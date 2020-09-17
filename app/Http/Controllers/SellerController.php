@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class SellerController extends Controller
 {
     public function index(){
+        
         $data['comments'] = Comment::with('usuarios','respuestas','product')
             ->whereDoesntHave('respuestas')->paginate(5);
             

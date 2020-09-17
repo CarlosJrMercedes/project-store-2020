@@ -71,7 +71,7 @@ use App\Http\Controllers\IndexController;
     
     //client->
 
-    Route::POST('search','IndexController@search')->name('search');
+    Route::GET('search','IndexController@search')->name('search');
     Route::get('edit/perfil','HomeController@edit')->name('edit.perfil');
     Route::PUT('update/perfil','HomeController@update')->name('update.perfil');
 
@@ -92,9 +92,14 @@ use App\Http\Controllers\IndexController;
     
 
     // seller->
-    Route::GET('index/seller','SellerController@index')->name('index.seller');
-    Route::POST('show/seller','SellerController@answer')->name('show.seller');
-    Route::POST('new/answer','SellerController@respans')->name('new.answer');
+    Route::GET('index/seller','SellerController@index')->name('index.seller')
+     ->middleware('role:2;');;
+
+    Route::GET('show/seller','SellerController@answer')->name('show.seller')
+     ->middleware('role:2;');;
+
+    Route::POST('new/answer','SellerController@respans')->name('new.answer')
+     ->middleware('role:2;');;
 
 
     // <- seller

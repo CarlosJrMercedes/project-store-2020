@@ -100,7 +100,7 @@ rounded-md">
     rounded-md text-2xl justify-center items-center " >
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="flex w-full md:w-full px-3 mb-6 md:mb-0 justify-center items-center">
-                <img src="{{asset("storage/src/img/product-images/{$product->photo1}")}}" width="70%">
+                <img src="{{asset("storage/src/img/product-images/{$product->photo1}")}}" style="height: 350px;">
             
             </div>
         </div>

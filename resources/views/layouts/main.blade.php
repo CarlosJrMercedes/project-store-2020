@@ -46,7 +46,13 @@
         <div id="options" class="flex w-full block lg:flex lg:items-center lg:w-auto 
               hidden">
           <div class="flex text-sm lg:flex-grow sm:flex-col lg:flex-row">
-
+            <form action="">
+              <a class="text-flugreen-500  font-semibold py-3 px-4 rounded inline-flex 
+              items-center hover:border-blue-600 hover:text-blue-600" href="{{ route('index') }}">
+                      Home
+              </a>
+            </form>
+          <div class="m-2"></div>
               <div class="dropdown inline-block relative z-40">
                 <button class="text-flugreen-500  font-semibold py-3 px-4 rounded inline-flex 
                 items-center hover:border-blue-600 hover:text-blue-600">
@@ -80,17 +86,10 @@
               <div class="m-2"></div>
             
               {{-- <div class="dropdown inline-block relative"> --}}
-                <form action="">
-                  <button class="text-flugreen-500  font-semibold py-3 px-4 rounded inline-flex 
-                  items-center hover:border-blue-600 hover:text-blue-600">
-                          Ofertas
-                  </button>
-                </form>
-              <div class="m-2"></div>
+                
 
             
-            <form class="flex w-2/3 flex-shrink-0" action="{{ route('search') }}" method="POST">
-              @csrf
+            <form class="flex w-2/3 flex-shrink-0" action="{{ route('search') }}" method="GET">
                 <input type="text" class="bg-gray-800 appearance-none border-2 border-gray-500 
                 rounded w-full py-2 px-2 text-flugreen-500  leading-tight 
                 focus:outline-none focus:bg-gray-700 focus:border-gray-500
@@ -99,7 +98,7 @@
                 <div class="m-2"></div>
                 <button class="text-flugreen-500 py-3 px-4  
                 rounded inline-flex items-center hover:border-blue-600 hover:text-blue-600" type="submit">
-                Ofertas
+                Buscar
               </button>
               @error('search')
                   <span class="text-red-800 text-sm" role="alert">

@@ -37,11 +37,10 @@ class IndexController extends Controller
      */
     public function search(Request $request)
     {
-        $validate = $request->validate([
-            'search' => ['required','regex:/^[\pL\s\-]+$/u','max:60']
-        ]);
-
-    
+        $data['productsHome'] = Product::where('name','like','%'.$request->search.'%')->paginate(10);
+        
+        return view('client.search',$data);
+        // dd($search['search']);
     }
 
     /**

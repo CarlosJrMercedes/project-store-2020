@@ -26,8 +26,7 @@
                 <td class="border-r-2 border-black px-4 py-2">{{ $value->created_at }}</td>
                 <td>
                     <div class="flex flex-wrap flex-shrink-0 justify-center">
-                        <form action="{{ route('show.seller') }}" method="post">
-                            @csrf
+                        <form action="{{ route('show.seller') }}" method="GET">
                             <input type="text" name="product" value="{{ $value->id_product }}" readonly hidden>
                             <input type="text" name="comentario" value="{{ $value->id }}" readonly hidden>
                             <button title="Desabilitar" class="bg-green-600 border-2 border-gray-800 rounded-md py-1 px-2 
@@ -80,4 +79,11 @@
         </tr>
     </tbody>
   </table>
+@endsection
+
+@section('scrippt')
+@parent
+    @if (session('comment'))
+        <script>Swal.fire("Exito","{{session('comment')}}","success");</script>
+    @endif
 @endsection

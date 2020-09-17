@@ -74,6 +74,8 @@
                             <br>
                             <a class="text-red-800 underline hover:text-blue-500" 
                             href="{{ route('register') }}">{{ __('Registrate') }}</a>
+                            <a class="text-red-800 underline hover:text-blue-500" 
+                            href="{{ route('index') }}">{{ __('Regresar') }}</a>
                         </div>
                     @endif
                 </div>

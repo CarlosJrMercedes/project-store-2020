@@ -128,11 +128,9 @@ rounded-md">
         <input type="text" value="{{$product->id}}" name="product" readonly hidden>
         <input type="text" value="{{$comentarios->id}}" name="comment" readonly hidden>
         <div class="flex-1">
-            <textarea name="descripcion" id="description" required
-            class="bg-gray-800 appearance-none border-2 border-black 
-                rounded w-full py-1 px-1 text-flugreen-500  leading-tight 
-                focus:outline-none focus:bg-gray-700 focus:border-gray-500" 
-                >{{old('descripcion')}}</textarea>
+            <textarea name="descripcion" id="description" class="bg-gray-800 appearance-none border-2 
+            border-black rounded w-full py-1 px-1 text-flugreen-500  leading-tight focus:outline-none 
+            focus:bg-gray-700 focus:border-gray-500">{{old('descripcion')}}</textarea>
         </div>
         <div>
             @if ($errors->first('descripcion'))
@@ -167,9 +165,7 @@ rounded-md">
 
 @section('scrippt')
 @parent
-    @if (session('comment'))
-        <script>Swal.fire("Exito","{{session('comment')}}","success");</script>
-    @endif
+    
     <script>
         $('#closeDescripcion').on('click',function(){
             $('#errorDescripcion').attr('hidden',true);

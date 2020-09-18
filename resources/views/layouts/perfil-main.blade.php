@@ -44,7 +44,7 @@
             <a class="hover:bg-flugreen-500 hover:text-black text-flugreen-500 font-bold 
                     py-2 px-4 rounded transform motion-reduce:transform-none 
                     hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300"
-                    href="{{ route('factura')}}">
+                    href="{{ route('invoice.index')}}">
                 Facturas
             </a>
             <a class="hover:bg-flugreen-500 hover:text-black text-flugreen-500 font-bold 

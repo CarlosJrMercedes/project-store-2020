@@ -65,8 +65,10 @@ use App\Http\Controllers\IndexController;
     Route::get('offer/{id}/enable','OfferController@enable')->name('offer.enable')
     ->middleware('role:1;');
     Route::resource('offer', 'OfferController')->middleware('role:1;');
-    Route::GET('factura', 'InvoiceController@index')->name('factura')->middleware('role:1;');
-    
+    Route::GET('invoice/index', 'InvoiceController@index')->name('invoice.index')
+    ->middleware('role:1;');
+    Route::GET('invoice/{id}/show', 'InvoiceController@show')->name('invoice.show')
+    ->middleware('role:1;');
     
     //end offer
     Auth::routes();

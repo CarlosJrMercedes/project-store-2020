@@ -239,11 +239,16 @@ rounded-md">
     @if (session('vacio'))
         <script>Swal.fire("estado..!","{{session('vacio')}}","warning");</script>
     @endif
-    @if (session('compra'))
-        <script>Swal.fire("Exito","{{session('compra')}}","success");</script>
-    @endif
     @if (session('comment'))
         <script>Swal.fire("Exito","{{session('comment')}}","success");</script>
+    @endif
+    @if (session('compra'))
+        <script>
+            var invoiceId = "{{session('compra')}}";
+            Swal.fire("Exito","Se realizo la compra sastifactorianete","success");
+
+            window.open("{{url('invoice/'.session('compra'))}}");
+        </script>
     @endif
     <script>
         $('#closeDescripcion').on('click',function(){

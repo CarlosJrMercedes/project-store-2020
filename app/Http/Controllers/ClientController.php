@@ -76,8 +76,6 @@ class ClientController extends Controller
                 return back()->with('comment','Ocurrio un eeror, no se pudo guardar tu elección..!!');
             }
         }
-            
-
-        dd($idRating);
     }
+    
 }

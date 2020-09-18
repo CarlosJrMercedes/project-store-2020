@@ -64,14 +64,17 @@ use App\Http\Controllers\IndexController;
     ->middleware('role:1;');
     Route::get('offer/{id}/enable','OfferController@enable')->name('offer.enable')
     ->middleware('role:1;');
-    Route::resource('offer', 'OfferController')
-    ->middleware('role:1;');
+    Route::resource('offer', 'OfferController')->middleware('role:1;');
+    Route::GET('factura', 'InvoiceController@index')->name('factura')->middleware('role:1;');
+    
+    
     //end offer
     Auth::routes();
     
     //client->
 
     Route::GET('search','IndexController@search')->name('search');
+    Route::GET('view/{id}/categry','IndexController@viewAllCategoriesd')->name('view.categry');
     Route::get('edit/perfil','HomeController@edit')->name('edit.perfil');
     Route::PUT('update/perfil','HomeController@update')->name('update.perfil');
 
@@ -93,13 +96,14 @@ use App\Http\Controllers\IndexController;
 
     // seller->
     Route::GET('index/seller','SellerController@index')->name('index.seller')
-     ->middleware('role:2;');;
+     ->middleware('role:2;');
 
     Route::GET('show/seller','SellerController@answer')->name('show.seller')
-     ->middleware('role:2;');;
+     ->middleware('role:2;');
 
     Route::POST('new/answer','SellerController@respans')->name('new.answer')
-     ->middleware('role:2;');;
+     ->middleware('role:2;');
 
+     Route::GET('invoice/{invoiceId}','CartController@invoice')->name('invoice');
 
     // <- seller

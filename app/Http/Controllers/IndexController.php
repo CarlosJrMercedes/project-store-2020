@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\models\Category;
 use App\models\Product;
+use App\models\SubCategory;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -24,9 +25,20 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function viewAllCategoriesd(Request $request)
     {
-        //
+        $subCategories = SubCategory::where('id_category','=',$request->id)->get();
+
+        $id[] =[];
+            $lon=0;
+        foreach ($subCategories as $values):
+            $id[$lon] = $values->id;
+            $lon++;
+        endforeach;
+        $data['productsHome'] = Product::whereIn('id_sub_category',$id)->paginate(10);
+        
+        // dd($data['productsHome']);
+        return view('client.search',$data);
     }
 
     /**

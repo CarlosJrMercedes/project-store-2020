@@ -41,11 +41,12 @@
                     href="{{ route('sub-categories.index') }}">
                 Sub Categorias
             </a>
-            <button class="hover:bg-flugreen-500 hover:text-black text-flugreen-500 font-bold 
+            <a class="hover:bg-flugreen-500 hover:text-black text-flugreen-500 font-bold 
                     py-2 px-4 rounded transform motion-reduce:transform-none 
-                    hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300">
+                    hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300"
+                    href="{{ route('factura')}}">
                 Facturas
-            </button>
+            </a>
             <a class="hover:bg-flugreen-500 hover:text-black text-flugreen-500 font-bold 
                     py-2 px-4 rounded transform motion-reduce:transform-none 
                     hover:-translate-y-1 hover:scale-110 transition ease-in-out duration-300"

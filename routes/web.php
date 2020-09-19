@@ -79,6 +79,7 @@ use App\Http\Controllers\IndexController;
     Route::GET('view/{id}/categry','IndexController@viewAllCategoriesd')->name('view.categry');
     Route::get('edit/perfil','HomeController@edit')->name('edit.perfil');
     Route::PUT('update/perfil','HomeController@update')->name('update.perfil');
+    Route::PUT('update/{id}/seller-perfil','SellerController@update')->name('update.sellerperfil');
 
 
 
@@ -108,4 +109,6 @@ use App\Http\Controllers\IndexController;
 
      Route::GET('invoice/{invoiceId}','CartController@invoice')->name('invoice');
 
+     Route::GET('edit/perfil','SellerController@edit')->name('edit.perfil')
+     ->middleware('role:2;');
     // <- seller

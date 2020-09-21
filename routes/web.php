@@ -112,3 +112,7 @@ use App\Http\Controllers\IndexController;
      Route::GET('edit/perfil','SellerController@edit')->name('edit.perfil')
      ->middleware('role:2;');
     // <- seller
+
+
+    Route::get('paypal/pay', 'PaymentController@payWithPayPal')->name('paypal.pay');
+    Route::get('paypal/status', 'PaymentController@payPalStatus');

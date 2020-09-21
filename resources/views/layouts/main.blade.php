@@ -255,7 +255,7 @@
             <!--Footer-->
             <div class="flex justify-end pt-2">
               <a class="px-4 bg-green-500 p-3 rounded-lg text-white hover:bg-green-800 
-              hover:text-white mr-2 uppercase" href="{{ route('procesar.cart') }}">pagar</a>
+              hover:text-white mr-2 uppercase" href="{{ route('paypal.pay') }}">pagar</a>
 
               <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white 
               hover:bg-indigo-400 uppercase">Close</button>

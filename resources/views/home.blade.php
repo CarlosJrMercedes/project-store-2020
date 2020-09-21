@@ -196,10 +196,12 @@
     @if (session('compra'))
         <script>
             var invoiceId = "{{session('compra')}}";
-            Swal.fire("Exito","Se realizo la compra sastifactorianete","success");
+            Swal.fire("Exito","Gracias! El pago a través de PayPal se ha ralizado correctamente.","success");
 
             window.open("{{url('invoice/'.session('compra'))}}");
         </script>
     @endif
-    
+    @if (session('status'))
+        <script>Swal.fire("estado..!","{{session('status')}}","warning");</script>
+    @endif
 @endsection

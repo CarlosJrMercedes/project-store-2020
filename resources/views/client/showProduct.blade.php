@@ -255,4 +255,7 @@ rounded-md">
             $('#errorDescripcion').attr('hidden',true);
         });
     </script>
+    @if (session('status'))
+        <script>Swal.fire("estado..!","{{session('status')}}","warning");</script>
+    @endif
 @endsection

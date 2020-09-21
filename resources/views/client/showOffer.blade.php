@@ -121,4 +121,7 @@ rounded-md">
             window.open("{{url('invoice/'.session('compra'))}}");
         </script>
     @endif
+    @if (session('status'))
+        <script>Swal.fire("estado..!","{{session('status')}}","warning");</script>
+    @endif
 @endsection

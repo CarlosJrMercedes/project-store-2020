@@ -107,9 +107,10 @@ use App\Http\Controllers\IndexController;
     Route::POST('new/answer','SellerController@respans')->name('new.answer')
      ->middleware('role:2;');
 
-     Route::GET('invoice/{invoiceId}','CartController@invoice')->name('invoice');
+     Route::GET('invoice/{invoiceId}','CartController@invoice')->name('invoice')
+     ->middleware('role:2;');
 
-     Route::GET('edit/perfil','SellerController@edit')->name('edit.perfil')
+     Route::GET('edit/seller/perfil','SellerController@edit')->name('edit.seller.perfil')
      ->middleware('role:2;');
     // <- seller
 

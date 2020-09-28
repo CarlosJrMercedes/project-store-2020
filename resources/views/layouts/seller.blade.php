@@ -42,7 +42,7 @@
                 <ul class="dropdown-menu align-middle fixed right-0 mt-0 hidden text-gray-700 pr-4">
                   <li class="">
                     <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block 
-                         whitespace-no-wrap" href="{{ route('edit.perfil') }}">{{Auth()->user()->name}}</a>
+                         whitespace-no-wrap" href="{{ route('edit.seller.perfil') }}">{{Auth()->user()->name}}</a>
                   </li>
                   <li>
 
